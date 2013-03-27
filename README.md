@@ -34,4 +34,4 @@ Above we are shifting 12 hours forward.
   
 ```
 
-This will set new 'midnight' point at 8.00 am and check if 16.00 (4.00 pm) is inside 24 hours range caounting from 8.00 am.
+This will set new 'midnight' point at 8.00 am and check if 16.00 (4.00 pm) is inside 24 hours range counting from 8.00 am.

@@ -6,11 +6,10 @@ module ShiftDay
   class Base
     attr_reader :hour, :shifted_date, :date_range
 
-    def initialize(date = DateTime.now, number = 0)
+    def initialize(date = DateTime.now, hour = 0)
       @date = date
-      @zero_date = zero_time_now(@date)
-      @shifted_date = shift_hours(number)
-      @hour = number
+      @shifted_date = shift_midnight_to(hour)
+      @hour = hour
       @date_range = calculate_range
     end
 
@@ -25,8 +24,12 @@ module ShiftDay
       false
     end
 
+    def shifted_date
+      @shifted_date = shift_midnight_to(@hour)
+    end
+
     def shift(number)
-      @date = shift_hours(number)
+      @date = shift_midnight_to(number)
     end
 
     def inside_24_hours?(date)
@@ -35,8 +38,9 @@ module ShiftDay
 
     private
     
-    def shift_hours(number)
-      (@zero_date.to_time + number * HOUR).to_datetime
+    def shift_midnight_to(number)
+      zero_date = zero_time_now(@date)
+      (zero_date.to_time + number * HOUR).to_datetime
     end
 
     def zero_time_now(time_now)

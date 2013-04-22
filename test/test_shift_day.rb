@@ -39,13 +39,19 @@ module ShiftDay
       assert_equal(date_range, Base.new(@date_after_shifted, 6).date_range)
     end
 
-    def test_includes_24_hours_after_shifted_date
+    def test_future_date_inside_24_hours_after_shifted_date
       future_date = DateTime.new(2013, 3, 3, 12, 0, 0)
+      assert_equal(false, Base.new(@date_before_shifted, 6).inside_24_hours?(future_date))
+
+      future_date = DateTime.new(2013, 3, 4, 5, 59, 59)
       assert_equal(false, Base.new(@date_before_shifted, 6).inside_24_hours?(future_date))
     end
 
-    def test_includes_24_hours_before_shifted_date
+    def test_future_date_inside_24_hours_before_shifted_date
       future_date = DateTime.new(2013, 3, 3, 5, 30, 0)
+      assert_equal(true, Base.new(@date_before_shifted, 6).inside_24_hours?(future_date))
+
+      future_date = DateTime.new(2013, 3, 2, 23, 30, 0)
       assert_equal(true, Base.new(@date_before_shifted, 6).inside_24_hours?(future_date))
     end
   end

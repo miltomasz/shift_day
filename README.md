@@ -12,7 +12,7 @@ Gem for shifting midnight ahead or back. It delivers easy date calculations with
   
 ```
 
-This will create current date and shift 6 hours foward. The 'midnight' point will be at 6.00 am.
+This will create current date and shift 6 hours ahead. The 'midnight' point will be at 6.00 am.
 
 ```ruby
   require 'date'
@@ -23,7 +23,7 @@ This will create current date and shift 6 hours foward. The 'midnight' point wil
   
 ```
 
-Above we are shifting 12 hours forward.
+Above we are shifting 12 hours ahead.
 
 ```ruby
   require 'date'
